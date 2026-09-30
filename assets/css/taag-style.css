@@ -1,0 +1,344 @@
+/* ==================================================================
+   T.A.A.G. — taag-style.css  (v2)
+   Palette ricavata dal logo (bicromia):
+     inchiostro  #231E1F  (nero caldo del logo)
+     carta       #FDFDFD  (bianco del logo)
+   CSS moderno: custom properties, clamp(), grid, aspect-ratio,
+   proprietà logiche, rgb() con alpha, media query hover/pointer.
+   Mobile-first. Nessuna dipendenza esterna.
+   ================================================================== */
+
+
+/* ---------- 1. VARIABILI ---------- */
+:root {
+	/* Colori logo */
+	--taag-ink:       #231E1F;
+	--taag-paper:     #FDFDFD;
+	--taag-ink-rgb:   35 30 31;            /* per sfumature con alpha */
+
+	/* Grigi derivati (mix inchiostro/carta) */
+	--taag-ink-80:    #4F4B4C;             /* testo secondario */
+	--taag-ink-20:    #D3D2D2;             /* bordi, separatori */
+
+	/* Forma e ritmo */
+	--taag-radius:      0;                 /* spigoli vivi come il lettering */
+	--taag-border:      2px solid var(--taag-ink);
+	--taag-section-gap: clamp(3rem, 8vw, 6rem);
+	--taag-grid-gap:    clamp(1rem, 2.5vw, 2rem);
+	--taag-card-min:    18rem;             /* larghezza minima scheda griglia */
+
+	/* Movimento */
+	--taag-ease:      cubic-bezier(0.2, 0.6, 0.2, 1);
+	--taag-dur:       0.5s;
+
+	--taag-font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+
+/* ---------- 2. BASE ---------- */
+body {
+	background-color: var(--taag-paper);
+	color: var(--taag-ink);
+	font-family: var(--taag-font);
+	line-height: 1.65;
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+}
+
+p,
+li {
+	color: var(--taag-ink-80);
+	text-wrap: pretty;                     /* evita parole orfane */
+}
+
+strong {
+	color: var(--taag-ink);
+}
+
+small {
+	font-size: 0.85em;
+	color: var(--taag-ink-80);
+}
+
+img {
+	max-inline-size: 100%;
+	block-size: auto;
+}
+
+
+/* ---------- 3. TITOLI (peso e maiuscolo come il logo) ---------- */
+h1, h2, h3,
+.wp-block-heading {
+	color: var(--taag-ink);
+	font-family: var(--taag-font);
+	font-weight: 900;
+	line-height: 1.1;
+	letter-spacing: -0.02em;
+	text-wrap: balance;                    /* righe bilanciate */
+}
+
+h1 {
+	font-size: clamp(2.25rem, 6vw, 4rem);
+	text-transform: uppercase;
+}
+
+h2 {
+	font-size: clamp(1.6rem, 4vw, 2.5rem);
+	text-transform: uppercase;
+}
+
+h3 {
+	font-size: clamp(1.15rem, 2.5vw, 1.4rem);
+}
+
+
+/* ---------- 4. LINK ---------- */
+a {
+	color: var(--taag-ink);
+	text-decoration: underline;
+	text-decoration-thickness: 2px;
+	text-underline-offset: 0.2em;
+	transition: opacity 0.2s ease;
+}
+
+a:hover {
+	opacity: 0.65;
+}
+
+/* Focus visibile da tastiera (accessibilità) */
+:is(a, .wp-block-button__link):focus-visible {
+	outline: 3px solid var(--taag-ink);
+	outline-offset: 3px;
+}
+
+
+/* ---------- 5. SEZIONI (Gruppo con tagName="section") ---------- */
+section.wp-block-group {
+	padding-block: var(--taag-section-gap);
+}
+
+
+/* ---------- 6. SEPARATORE ---------- */
+.wp-block-separator {
+	border: none;
+	border-block-start: 1px solid var(--taag-ink-20);
+	opacity: 1;
+	margin-inline: auto;
+	max-inline-size: var(--wp--style--global--content-size, 720px);
+}
+
+
+/* ---------- 7. PULSANTI ---------- */
+/* Pieno: nero su bianco, invertito in hover */
+.wp-block-button__link {
+	background-color: var(--taag-ink);
+	color: var(--taag-paper);
+	border: var(--taag-border);
+	border-radius: var(--taag-radius);
+	padding: 0.85em 1.8em;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
+	text-decoration: none;
+	transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.wp-block-button__link:hover {
+	background-color: var(--taag-paper);
+	color: var(--taag-ink);
+	opacity: 1;
+}
+
+/* Contorno (is-style-outline) */
+.wp-block-button.is-style-outline > .wp-block-button__link {
+	background-color: transparent;
+	color: var(--taag-ink);
+	border: var(--taag-border);
+}
+
+.wp-block-button.is-style-outline > .wp-block-button__link:hover {
+	background-color: var(--taag-ink);
+	color: var(--taag-paper);
+}
+
+/* Mobile: pulsanti a tutta larghezza (target touch ampio) */
+@media (width < 782px) {
+	.wp-block-buttons {
+		flex-direction: column;
+		align-items: stretch;
+	}
+
+	.wp-block-button,
+	.wp-block-button__link {
+		inline-size: 100%;
+		text-align: center;
+	}
+}
+
+
+/* ---------- 8. IMMAGINI ---------- */
+.wp-block-image img {
+	border-radius: var(--taag-radius);
+}
+
+/* Immagini in colonne (Home "In evidenza"): proporzione uniforme */
+.wp-block-column .wp-block-image img {
+	inline-size: 100%;
+	aspect-ratio: 4 / 3;
+	object-fit: cover;
+}
+
+
+/* ---------- 9. COLONNE (Home, Chi Siamo) ---------- */
+.wp-block-columns {
+	gap: var(--taag-grid-gap);
+}
+
+/* Titolo in cima a colonna: barra nera come "etichetta" */
+.wp-block-column > .wp-block-heading:first-child {
+	padding-block-start: 1rem;
+	border-block-start: 4px solid var(--taag-ink);
+}
+
+
+/* ---------- 10. LISTE (Dati associazione) ---------- */
+.wp-block-list {
+	list-style: none;
+	padding-inline-start: 0;
+}
+
+.wp-block-list li {
+	padding-block: 0.75rem;
+	border-block-end: 1px solid var(--taag-ink-20);
+}
+
+
+/* ==================================================================
+   11. GRIGLIA PORTFOLIO — pagina Iniziative
+   Markup: Gruppo (classe "taag-grid", layout Griglia)
+           > blocchi Immagine (classe "taag-card") con didascalia = titolo
+   ================================================================== */
+
+/* Griglia fluida: colonne automatiche, nessun breakpoint necessario.
+   min(…, 100%) evita overflow su schermi più stretti di --taag-card-min.
+   Doppia classe = vince sugli stili di layout generati da WordPress. */
+.wp-block-group.taag-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(min(var(--taag-card-min), 100%), 1fr));
+	gap: var(--taag-grid-gap);
+}
+
+.wp-block-group.taag-grid > * {
+	margin: 0;                             /* azzera margini di flusso WP */
+}
+
+/* --- Scheda --- */
+.wp-block-image.taag-card {
+	position: relative;
+	overflow: hidden;                      /* taglia l'immagine durante lo zoom */
+	isolation: isolate;                    /* nuovo stacking context per z-index */
+	aspect-ratio: 4 / 3;
+	margin: 0;
+	border-radius: var(--taag-radius);
+	background-color: var(--taag-ink);     /* evita flash bianco al caricamento */
+}
+
+/* Immagine (anche se avvolta da link) riempie la scheda */
+.wp-block-image.taag-card :is(a, img) {
+	display: block;
+	inline-size: 100%;
+	block-size: 100%;
+}
+
+.wp-block-image.taag-card img {
+	object-fit: cover;
+	transition: transform var(--taag-dur) var(--taag-ease);
+	will-change: transform;
+}
+
+/* Sfumatura scura dal basso (sotto al titolo, sopra all'immagine) */
+.wp-block-image.taag-card::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	z-index: 1;
+	pointer-events: none;                  /* non blocca click sul link */
+	background: linear-gradient(
+		to top,
+		rgb(var(--taag-ink-rgb) / 0.92) 0%,
+		rgb(var(--taag-ink-rgb) / 0.45) 40%,
+		rgb(var(--taag-ink-rgb) / 0)    70%
+	);
+	transition: opacity var(--taag-dur) var(--taag-ease);
+}
+
+/* Titolo in sovrimpressione (didascalia del blocco Immagine) */
+.wp-block-image.taag-card figcaption {
+	position: absolute;
+	inset-inline: 0;
+	inset-block-end: 0;
+	z-index: 2;
+	margin: 0;
+	padding: clamp(1rem, 3vw, 1.5rem);
+	color: var(--taag-paper);
+	font-family: var(--taag-font);
+	font-size: clamp(1rem, 2vw, 1.25rem);
+	font-weight: 900;
+	line-height: 1.2;
+	letter-spacing: 0.02em;
+	text-align: start;
+	text-transform: uppercase;
+	text-wrap: balance;
+	transition:
+		opacity   var(--taag-dur) var(--taag-ease),
+		transform var(--taag-dur) var(--taag-ease);
+}
+
+.wp-block-image.taag-card figcaption a {
+	color: inherit;
+	text-decoration: none;
+}
+
+/* --- Comportamento hover ---
+   Default (touch / nessun hover): titolo e sfumatura sempre visibili.
+   Solo con mouse: nascosti, compaiono con zoom al passaggio. */
+@media (hover: hover) and (pointer: fine) {
+	.wp-block-image.taag-card::after {
+		opacity: 0;
+	}
+
+	.wp-block-image.taag-card figcaption {
+		opacity: 0;
+		transform: translateY(0.75rem);
+	}
+
+	/* :focus-within = stesso effetto se la scheda contiene un link
+	   raggiunto da tastiera */
+	.wp-block-image.taag-card:is(:hover, :focus-within) img {
+		transform: scale(1.06);            /* zoom leggero */
+	}
+
+	.wp-block-image.taag-card:is(:hover, :focus-within)::after {
+		opacity: 1;
+	}
+
+	.wp-block-image.taag-card:is(:hover, :focus-within) figcaption {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+
+/* ---------- 12. RIDUZIONE MOVIMENTO ---------- */
+/* Rispetta impostazione di sistema: niente zoom né animazioni */
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		transition-duration: 0.01ms !important;
+	}
+
+	.wp-block-image.taag-card:is(:hover, :focus-within) img {
+		transform: none;
+	}
+}

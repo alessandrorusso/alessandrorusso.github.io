@@ -1,0 +1,323 @@
+/* ==================================================================
+   T.A.A.G. — taag-base.css
+   Sostituisce ciò che nel contesto WordPress fornivano core + tema:
+     1. reset minimo
+     2. layout blocchi (larghezza contenuto, colonne, pulsanti, immagini)
+     3. header con menu mobile
+     4. footer
+   Caricare PRIMA di taag-style.css (che gestisce l'aspetto).
+   Classi wp-block-* mantenute: markup riusabile in Gutenberg.
+   ================================================================== */
+
+
+/* ---------- 1. RESET MINIMO ---------- */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html {
+	-webkit-text-size-adjust: 100%;
+	scroll-behavior: smooth;
+}
+
+body {
+	margin: 0;
+	min-block-size: 100vh;
+	display: flex;
+	flex-direction: column;              /* footer sempre in fondo */
+}
+
+main {
+	flex: 1;
+}
+
+h1, h2, h3, p, ul {
+	margin-block: 0 1rem;
+}
+
+figure {
+	margin: 0 0 1rem;                    /* azzera anche margine laterale di default (40px) */
+}
+
+img,
+svg {
+	display: block;
+}
+
+/* Link "salta al contenuto" per tastiera/screen reader */
+.taag-skip {
+	position: absolute;
+	inset-inline-start: 1rem;
+	inset-block-start: -3rem;
+	z-index: 100;
+	padding: 0.5rem 1rem;
+	background: var(--taag-ink);
+	color: var(--taag-paper);
+}
+
+.taag-skip:focus {
+	inset-block-start: 1rem;
+}
+
+
+/* ---------- 2. LAYOUT BLOCCHI ---------- */
+:root {
+	--taag-content: 720px;               /* = content-size tema WP */
+	--taag-wide:    1200px;              /* = wide-size tema WP */
+	--taag-gutter:  16px;                /* margine laterale mobile */
+	--wp--style--global--content-size: var(--taag-content);
+}
+
+/* Sezione "constrained": figli centrati a larghezza contenuto */
+section.wp-block-group {
+	padding-inline: var(--taag-gutter);
+}
+
+section.wp-block-group > * {
+	max-inline-size: var(--taag-content);
+	margin-inline: auto;
+}
+
+section.wp-block-group > .alignwide {
+	max-inline-size: var(--taag-wide);
+}
+
+/* Separatore tra sezioni: rientro laterale come le sezioni */
+main > .wp-block-separator {
+	margin-inline: max(var(--taag-gutter), calc((100% - var(--taag-content)) / 2));
+}
+
+/* Allineamento testo */
+.has-text-align-center {
+	text-align: center;
+}
+
+/* Colonne: impilate su mobile, affiancate da 782px (come WP) */
+.wp-block-columns {
+	display: flex;
+	flex-wrap: wrap;
+	margin-block-end: 1.5rem;
+}
+
+.wp-block-column {
+	flex-basis: 100%;
+	min-inline-size: 0;
+}
+
+.wp-block-columns.are-vertically-aligned-center {
+	align-items: center;
+}
+
+@media (width >= 782px) {
+	.wp-block-columns {
+		flex-wrap: nowrap;
+	}
+
+	.wp-block-column {
+		flex: 1 1 0;
+	}
+
+	/* Larghezza esplicita (style="flex-basis:40%") ha priorità */
+	.wp-block-column[style*="flex-basis"] {
+		flex-grow: 0;
+	}
+}
+
+/* Pulsanti */
+.wp-block-buttons {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.75rem;
+}
+
+.wp-block-buttons.is-content-justification-center {
+	justify-content: center;
+}
+
+.wp-block-button__link {
+	display: inline-block;
+	cursor: pointer;
+}
+
+/* Immagini */
+.wp-block-image img {
+	max-inline-size: 100%;
+	block-size: auto;
+}
+
+.wp-block-image.aligncenter {
+	display: table;
+	margin-inline: auto;
+}
+
+.wp-element-caption {
+	margin-block-start: 0.5rem;
+	font-size: 0.9em;
+}
+
+
+/* ---------- 3. HEADER ---------- */
+.taag-header {
+	position: sticky;
+	inset-block-start: 0;
+	z-index: 50;
+	background-color: var(--taag-paper);
+	border-block-end: 1px solid var(--taag-ink-20);
+}
+
+.taag-header__inner {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	max-inline-size: var(--taag-wide);
+	margin-inline: auto;
+	padding: 0.75rem var(--taag-gutter);
+}
+
+.taag-header__logo {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+	font-weight: 900;
+	letter-spacing: 0.04em;
+	text-decoration: none;
+}
+
+.taag-header__logo:hover {
+	opacity: 1;
+}
+
+.taag-header__logo img {
+	inline-size: 48px;
+	block-size: 48px;
+}
+
+/* Pulsante menu (solo mobile) */
+.taag-nav-toggle {
+	display: none;
+	padding: 0.5rem 0.9rem;
+	background: transparent;
+	color: var(--taag-ink);
+	border: var(--taag-border);
+	border-radius: var(--taag-radius);
+	font: inherit;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
+	cursor: pointer;
+}
+
+.taag-nav ul {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.25rem 1.5rem;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.taag-nav li {
+	padding: 0;
+	border: 0;
+}
+
+.taag-nav a {
+	display: block;
+	padding-block: 0.5rem;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
+	text-decoration: none;
+	border-block-end: 2px solid transparent;
+}
+
+/* Voce pagina corrente */
+.taag-nav a[aria-current="page"] {
+	border-block-end-color: var(--taag-ink);
+}
+
+/* Mobile con JS attivo: menu a scomparsa.
+   Senza JS (.js assente) il menu resta sempre visibile. */
+@media (width < 782px) {
+	.js .taag-nav-toggle {
+		display: block;
+	}
+
+	.js .taag-nav {
+		display: none;
+		flex-basis: 100%;
+	}
+
+	.js .taag-nav.is-open {
+		display: block;
+	}
+
+	.taag-nav ul {
+		flex-direction: column;
+		padding-block: 0.5rem;
+	}
+}
+
+
+/* ---------- 4. FOOTER ---------- */
+.taag-footer {
+	margin-block-start: var(--taag-section-gap);
+	background-color: var(--taag-ink);
+	color: var(--taag-paper);
+}
+
+.taag-footer__inner {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+	gap: 1rem 2rem;
+	max-inline-size: var(--taag-wide);
+	margin-inline: auto;
+	padding: 2rem var(--taag-gutter);
+}
+
+.taag-footer p {
+	margin: 0;
+	color: var(--taag-ink-20);
+	font-size: 0.9rem;
+}
+
+.taag-footer a {
+	color: var(--taag-paper);
+}
+
+.taag-footer a:focus-visible {
+	outline-color: var(--taag-paper);
+}
+
+/* Icone social (Font Awesome) */
+.taag-footer__social {
+	display: flex;
+	gap: 0.5rem;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.taag-footer__social a {
+	display: grid;
+	place-items: center;
+	inline-size: 44px;                   /* area touch minima consigliata */
+	block-size: 44px;
+	border: 2px solid var(--taag-paper);
+	color: var(--taag-paper);
+	font-size: 1.25rem;
+	text-decoration: none;
+	transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Hover: inversione colori, coerente con i pulsanti */
+.taag-footer__social a:hover {
+	background-color: var(--taag-paper);
+	color: var(--taag-ink);
+	opacity: 1;
+}

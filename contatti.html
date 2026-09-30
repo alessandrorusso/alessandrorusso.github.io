@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Contatti — T.A.A.G.</title>
+	<meta name="description" content="Contatti Associazione T.A.A.G.: email, Instagram e sede a Reggio Calabria.">
+
+	<!-- Anteprima condivisione social (Open Graph) -->
+	<meta property="og:type" content="website">
+	<meta property="og:title" content="Contatti — T.A.A.G.">
+	<meta property="og:description" content="Contatti Associazione T.A.A.G.: email, Instagram e sede a Reggio Calabria.">
+	<meta property="og:image" content="assets/img/logo-taag-bordo.png">
+	<meta property="og:locale" content="it_IT">
+
+	<link rel="icon" type="image/png" href="assets/img/favicon.png">
+	<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+
+	<!-- Font Awesome 6 (CDN cdnjs): nucleo + solid (busta) + brands (Instagram) -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/fontawesome.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/solid.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/brands.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+	<!-- Ordine: base (layout) poi style (aspetto) -->
+	<link rel="stylesheet" href="assets/css/taag-base.css">
+	<link rel="stylesheet" href="assets/css/taag-style.css">
+
+	<!-- Segnala JS attivo: abilita menu a scomparsa su mobile -->
+	<script>document.documentElement.classList.add('js');</script>
+	<script src="assets/js/menu.js" defer></script>
+</head>
+<body>
+	<a class="taag-skip" href="#contenuto">Vai al contenuto</a>
+
+	<!-- ============ HEADER (identico in tutte le pagine) ============ -->
+	<header class="taag-header">
+		<div class="taag-header__inner">
+			<a class="taag-header__logo" href="index.html">
+				<img src="assets/img/logo-taag-bordo.png" alt="" width="48" height="48">
+				<span>T.A.A.G.</span>
+			</a>
+
+			<button class="taag-nav-toggle" type="button" aria-expanded="false" aria-controls="taag-nav">Menu</button>
+
+			<nav class="taag-nav" id="taag-nav" aria-label="Menu principale">
+				<ul>
+					<li><a href="index.html">Home</a></li>
+					<li><a href="chi-siamo.html">Chi siamo</a></li>
+					<li><a href="iniziative.html">Iniziative</a></li>
+					<li><a href="contatti.html" aria-current="page">Contatti</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+
+	<!-- ============ CONTENUTO PAGINA ============ -->
+	<main id="contenuto">
+		<!-- SEZIONE 1 — INTRO -->
+
+		<section class="wp-block-group">
+		<h1 class="wp-block-heading">Contatti</h1>
+
+		<p>Per informazioni, collaborazioni o partecipazione agli eventi, scrivici.</p>
+		</section>
+
+		<!-- SEZIONE 2 — RECAPITI: sx online, dx sede -->
+
+		<section class="wp-block-group">
+		<div class="wp-block-columns">
+		<div class="wp-block-column">
+		<h3 class="wp-block-heading">Email</h3>
+
+		<p><a href="mailto:taagassociazione@gmail.com">taagassociazione@gmail.com</a></p>
+
+		<h3 class="wp-block-heading">Instagram</h3>
+
+		<p><a href="https://www.instagram.com/taag_eventi.reggiocalabria" target="_blank" rel="noreferrer noopener">@taag_eventi.reggiocalabria</a></p>
+		</div>
+
+		<div class="wp-block-column">
+		<h3 class="wp-block-heading">Sede</h3>
+
+		<p>Via Rodi, 14<br>89129 Reggio Calabria (RC)</p>
+		</div>
+		</div>
+		</section>
+
+		<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+		<!-- SEZIONE 3 — DATI LEGALI -->
+
+		<section class="wp-block-group">
+		<p><small>Associazione T.A.A.G. · P. IVA 03287710804</small></p>
+		</section>
+	</main>
+
+	<!-- ============ FOOTER (identico in tutte le pagine) ============ -->
+	<footer class="taag-footer">
+		<div class="taag-footer__inner">
+			<p>Associazione T.A.A.G. · Via Rodi, 14 – 89129 Reggio Calabria · P. IVA 03287710804</p>
+			<!-- Icone Font Awesome: aria-hidden sull'icona, aria-label sul link (accessibilità) -->
+			<ul class="taag-footer__social">
+				<li>
+					<a href="mailto:taagassociazione@gmail.com" aria-label="Email" title="Email">
+						<i class="fa-solid fa-envelope" aria-hidden="true"></i>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.instagram.com/taag_eventi.reggiocalabria" target="_blank" rel="noopener noreferrer" aria-label="Instagram (si apre in una nuova scheda)" title="Instagram">
+						<i class="fa-brands fa-instagram" aria-hidden="true"></i>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</footer>
+</body>
+</html>

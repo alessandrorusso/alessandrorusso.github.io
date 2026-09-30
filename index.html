@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>T.A.A.G. — Associazione culturale, Reggio Calabria</title>
+	<meta name="description" content="Associazione T.A.A.G.: arte, cultura e valorizzazione del territorio calabrese. Organizzatori della Reggio Calabria Tattoo Convention.">
+
+	<!-- Anteprima condivisione social (Open Graph) -->
+	<meta property="og:type" content="website">
+	<meta property="og:title" content="T.A.A.G. — Associazione culturale, Reggio Calabria">
+	<meta property="og:description" content="Associazione T.A.A.G.: arte, cultura e valorizzazione del territorio calabrese. Organizzatori della Reggio Calabria Tattoo Convention.">
+	<meta property="og:image" content="assets/img/logo-taag-bordo.png">
+	<meta property="og:locale" content="it_IT">
+
+	<link rel="icon" type="image/png" href="assets/img/favicon.png">
+	<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+
+	<!-- Font Awesome 6 (CDN cdnjs): nucleo + solid (busta) + brands (Instagram) -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/fontawesome.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/solid.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/brands.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+	<!-- Ordine: base (layout) poi style (aspetto) -->
+	<link rel="stylesheet" href="assets/css/taag-base.css">
+	<link rel="stylesheet" href="assets/css/taag-style.css">
+
+	<!-- Segnala JS attivo: abilita menu a scomparsa su mobile -->
+	<script>document.documentElement.classList.add('js');</script>
+	<script src="assets/js/menu.js" defer></script>
+</head>
+<body>
+	<a class="taag-skip" href="#contenuto">Vai al contenuto</a>
+
+	<!-- ============ HEADER (identico in tutte le pagine) ============ -->
+	<header class="taag-header">
+		<div class="taag-header__inner">
+			<a class="taag-header__logo" href="index.html">
+				<img src="assets/img/logo-taag-bordo.png" alt="" width="48" height="48">
+				<span>T.A.A.G.</span>
+			</a>
+
+			<button class="taag-nav-toggle" type="button" aria-expanded="false" aria-controls="taag-nav">Menu</button>
+
+			<nav class="taag-nav" id="taag-nav" aria-label="Menu principale">
+				<ul>
+					<li><a href="index.html" aria-current="page">Home</a></li>
+					<li><a href="chi-siamo.html">Chi siamo</a></li>
+					<li><a href="iniziative.html">Iniziative</a></li>
+					<li><a href="contatti.html">Contatti</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+
+	<!-- ============ CONTENUTO PAGINA ============ -->
+	<main id="contenuto">
+		<!-- SEZIONE 1 — HERO: logo, nome, claim, due CTA -->
+
+		<section class="wp-block-group">
+		<figure class="wp-block-image aligncenter size-medium is-resized"><img src="assets/img/logo-taag-bordo.png" width="180" height="180" alt="Logo associazione T.A.A.G." style="width:180px"/></figure>
+
+		<h1 class="wp-block-heading has-text-align-center">Associazione T.A.A.G.</h1>
+
+		<p class="has-text-align-center">Arte, cultura e valorizzazione del territorio calabrese.</p>
+
+		<div class="wp-block-buttons is-content-justification-center">
+		<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="iniziative.html">Le nostre iniziative</a></div>
+
+		<div class="wp-block-button is-style-outline"><a class="wp-block-button__link wp-element-button" href="contatti.html">Contattaci</a></div>
+		</div>
+		</section>
+
+		<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+		<!-- SEZIONE 2 — CHI SIAMO (anteprima breve + link a pagina completa) -->
+
+		<section class="wp-block-group">
+		<h2 class="wp-block-heading">Chi siamo</h2>
+
+		<p>T.A.A.G. è un'associazione di Reggio Calabria che lega la propria attività artistica alla valorizzazione della cultura e del territorio calabrese.</p>
+
+		<p><a href="chi-siamo.html">Scopri di più →</a></p>
+		</section>
+
+		<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+		<!-- SEZIONE 3 — IN EVIDENZA: evento principale (immagine + testo) -->
+
+		<section class="wp-block-group">
+		<h2 class="wp-block-heading">In evidenza</h2>
+
+		<div class="wp-block-columns are-vertically-aligned-center">
+		<div class="wp-block-column is-vertically-aligned-center">
+		<figure class="wp-block-image size-large"><img loading="lazy" src="assets/img/placeholder.svg" alt="Reggio Calabria Tattoo Convention"/></figure>
+		</div>
+
+		<div class="wp-block-column is-vertically-aligned-center">
+		<h3 class="wp-block-heading">Reggio Calabria Tattoo Convention</h3>
+
+		<p>Tatuatori professionisti italiani e internazionali, mostre, spettacoli e promozione del territorio. Nel 2026 alla quinta edizione.</p>
+
+		<div class="wp-block-buttons">
+		<div class="wp-block-button is-style-outline"><a class="wp-block-button__link wp-element-button" href="https://reggiocalabriatattooconvention.it/" target="_blank" rel="noreferrer noopener">Sito ufficiale</a></div>
+		</div>
+		</div>
+		</div>
+		</section>
+
+		<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+		<!-- SEZIONE 4 — ALTRE INIZIATIVE: 3 schede brevi -->
+
+		<section class="wp-block-group">
+		<h2 class="wp-block-heading">Iniziative</h2>
+
+		<div class="wp-block-columns">
+		<div class="wp-block-column">
+		<h3 class="wp-block-heading">[Iniziativa 1]</h3>
+
+		<p>[Descrizione breve, 1–2 righe.]</p>
+		</div>
+
+		<div class="wp-block-column">
+		<h3 class="wp-block-heading">[Iniziativa 2]</h3>
+
+		<p>[Descrizione breve, 1–2 righe.]</p>
+		</div>
+
+		<div class="wp-block-column">
+		<h3 class="wp-block-heading">[Iniziativa 3]</h3>
+
+		<p>[Descrizione breve, 1–2 righe.]</p>
+		</div>
+		</div>
+
+		<p><a href="iniziative.html">Tutte le iniziative →</a></p>
+		</section>
+
+		<hr class="wp-block-separator has-alpha-channel-opacity"/>
+
+		<!-- SEZIONE 5 — CTA CONTATTI -->
+
+		<section class="wp-block-group">
+		<h2 class="wp-block-heading has-text-align-center">Vuoi collaborare con noi?</h2>
+
+		<p class="has-text-align-center">Scrivici o seguici su Instagram per restare aggiornato sui prossimi eventi.</p>
+
+		<div class="wp-block-buttons is-content-justification-center">
+		<div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="contatti.html">Contatti</a></div>
+
+		<div class="wp-block-button is-style-outline"><a class="wp-block-button__link wp-element-button" href="https://www.instagram.com/taag_eventi.reggiocalabria" target="_blank" rel="noreferrer noopener">Instagram</a></div>
+		</div>
+		</section>
+	</main>
+
+	<!-- ============ FOOTER (identico in tutte le pagine) ============ -->
+	<footer class="taag-footer">
+		<div class="taag-footer__inner">
+			<p>Associazione T.A.A.G. · Via Rodi, 14 – 89129 Reggio Calabria · P. IVA 03287710804</p>
+			<!-- Icone Font Awesome: aria-hidden sull'icona, aria-label sul link (accessibilità) -->
+			<ul class="taag-footer__social">
+				<li>
+					<a href="mailto:taagassociazione@gmail.com" aria-label="Email" title="Email">
+						<i class="fa-solid fa-envelope" aria-hidden="true"></i>
+					</a>
+				</li>
+				<li>
+					<a href="https://www.instagram.com/taag_eventi.reggiocalabria" target="_blank" rel="noopener noreferrer" aria-label="Instagram (si apre in una nuova scheda)" title="Instagram">
+						<i class="fa-brands fa-instagram" aria-hidden="true"></i>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</footer>
+</body>
+</html>
