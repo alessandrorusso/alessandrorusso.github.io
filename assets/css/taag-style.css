@@ -181,6 +181,19 @@ section.wp-block-group {
 	border-radius: var(--taag-radius);
 }
 
+/* Logo come immagine di sezione: intero (niente ritaglio), dimensione contenuta */
+.wp-block-image.taag-logo img {
+	inline-size: min(14rem, 100%);
+	block-size: auto;
+	border-radius: 0;
+}
+
+/* Locandina verticale come immagine di sezione: larghezza contenuta */
+.wp-block-image.taag-poster img {
+	inline-size: min(20rem, 100%);
+	block-size: auto;
+}
+
 /* Immagini in colonne (Home "In evidenza"): proporzione uniforme */
 .wp-block-column .wp-block-image img {
 	inline-size: 100%;
@@ -232,6 +245,14 @@ section.wp-block-group {
 	margin: 0;                             /* azzera margini di flusso WP */
 }
 
+/* Sezione "Altre iniziative" senza schede: nascosta, con il separatore che la segue.
+   (Non "hr:has(+ .taag-altre:not(:has(...)))": :has() annidato è invalido e
+   il browser scarterebbe l'intera regola.) */
+.taag-altre:not(:has(.taag-card)),
+.taag-altre:not(:has(.taag-card)) + hr {
+	display: none;
+}
+
 /* --- Scheda --- */
 .wp-block-image.taag-card {
 	position: relative;
@@ -254,6 +275,17 @@ section.wp-block-group {
 	object-fit: cover;
 	transition: transform var(--taag-dur) var(--taag-ease);
 	will-change: transform;
+}
+
+/* Variante logo: immagine intera su fondo chiaro, senza ritaglio */
+.wp-block-image.taag-card--logo {
+	background-color: var(--taag-paper);
+}
+
+.wp-block-image.taag-card--logo img {
+	object-fit: contain;
+	padding: 1.5rem;
+	border-radius: 0;
 }
 
 /* Sfumatura scura dal basso (sotto al titolo, sopra all'immagine) */
