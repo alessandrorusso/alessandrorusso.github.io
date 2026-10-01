@@ -181,17 +181,14 @@ section.wp-block-group {
 	border-radius: var(--taag-radius);
 }
 
-/* Logo come immagine di sezione: intero (niente ritaglio), dimensione contenuta */
-.wp-block-image.taag-logo img {
-	inline-size: min(14rem, 100%);
+/* Immagine di sezione iniziativa (logo o locandina): stesso riquadro
+   quadrato per tutte, immagine intera (niente ritaglio) e centrata */
+.wp-block-image.taag-media img {
+	inline-size: min(16rem, 100%);
 	block-size: auto;
+	aspect-ratio: 1;
+	object-fit: contain;
 	border-radius: 0;
-}
-
-/* Locandina verticale come immagine di sezione: larghezza contenuta */
-.wp-block-image.taag-poster img {
-	inline-size: min(20rem, 100%);
-	block-size: auto;
 }
 
 /* Immagini in colonne (Home "In evidenza"): proporzione uniforme */
